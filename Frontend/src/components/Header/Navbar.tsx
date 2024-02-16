@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -28,7 +29,10 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-primary-color border-b border-solid dark:border-border-color relative min-h-18">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link
+          to="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+        >
           <svg
             width="2rem"
             height="2rem"
@@ -41,7 +45,7 @@ const Navbar = () => {
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-primary-font-color">
             Vercel
           </span>
-        </a>
+        </Link>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
           <button
             type="button"
@@ -76,36 +80,28 @@ const Navbar = () => {
             </div>
             <ul className="py-2" aria-labelledby="user-menu-button">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/dashboard"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
                   Dashboard
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/settings"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
                   Settings
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Earnings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
+                <Link
+                  to="/signout"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
                   Sign out
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
