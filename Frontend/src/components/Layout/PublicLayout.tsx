@@ -6,7 +6,7 @@ const PublicLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Logo />
-      <div className="flex-1">
+      <div className="flex-1 my-4">
         <Outlet />
       </div>
       <Footer />
