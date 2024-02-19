@@ -8,16 +8,24 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import App from "./App";
-import SignUp from "./components/SignUp";
 import PublicLayout from "./components/Layout/PublicLayout";
 import PageNotFound from "./components/Dummy/PageNotFound";
-import SignIn from "./components/SignIn";
+import SignIn from "./components/Pages/SignIn";
+import SignUp from "./components/Pages/SignUp";
+import PrivateLayout from "./components/Layout/PrivateLayout";
+import Project from "./components/Project/Project";
+import Dashboard from "./components/Pages/Dashboard/Dashboard";
+import ProjectDetails from "./components/Project/ProjectDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route path="/" element={<PrivateLayout />}>
+        <Route path="" element={<Dashboard />} />
+        <Route path="project" element={<Project />} />
+        <Route path="project/:projectId" element={<ProjectDetails />} />
+      </Route>
       <Route path="/" element={<PublicLayout />}>
-        <Route path="" element={<App />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="signin" element={<SignIn />} />
       </Route>
