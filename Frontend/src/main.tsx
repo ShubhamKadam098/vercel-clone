@@ -7,7 +7,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import App from "./App";
 import PublicLayout from "./components/Layout/PublicLayout";
 import PageNotFound from "./components/Dummy/PageNotFound";
 import SignIn from "./components/Pages/SignIn";
@@ -27,7 +26,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/" element={<PublicLayout />}>
         <Route path="signup" element={<SignUp />} />
-        <Route path="signin" element={<SignIn />} />
+        <Route path="login" element={<SignIn />} />
       </Route>
       <Route path="*" element={<PageNotFound />}></Route>
     </>
