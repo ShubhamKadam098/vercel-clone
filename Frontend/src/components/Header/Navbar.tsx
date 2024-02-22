@@ -1,9 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { doSignOut } from "../../firebase/auth";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  const handleLogout = async () => {
+    try {
+      await doSignOut();
+    } catch (error) {
+      console.error("Error while logging out: ", error);
+    }
+  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -12,8 +22,8 @@ const Navbar = () => {
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      !(dropdownRef.current as any).contains(event.target)
+      !(dropdownRef.current as HTMLElement).contains(event.target as Node) &&
+      buttonRef.current !== event.target
     ) {
       setIsDropdownOpen(false);
     }
@@ -75,7 +85,7 @@ const Navbar = () => {
                 Bonnie Green
               </span>
               <span className="block text-sm text-white truncate dark:text-gray-400">
-                name@flowbite.com {/* Changed text color to white */}
+                name@example.com
               </span>
             </div>
             <ul className="py-2" aria-labelledby="user-menu-button">
@@ -96,12 +106,12 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/signout"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                <button
+                  className="w-full text-start block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  onClick={() => handleLogout()}
                 >
                   Sign out
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
